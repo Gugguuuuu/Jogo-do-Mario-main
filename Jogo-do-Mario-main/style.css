@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+body{
+    background-color: rgb(0, 119, 0);
+}
+.game-board{
+    width: 100%;
+    height: 90vh;
+    border-bottom: 40px solid rgb(0, 119, 0);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgb(85, 204, 255), rgb(255, 255, 255));
+}
+.cano{
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 70px;
+    animation: pipe-animations 1.5s infinite linear;
+    filter: saturate(150%);
+}
+
+.mario{
+    width: 200px;
+    position: absolute;
+    bottom: -58px;
+    margin: 0;
+    filter: saturate(150%);
+}
+.nuvem{
+    width: 300px;
+    height: 225px;
+    top: 50px;
+    position:absolute;
+    animation: cloud 20s infinite linear;
+}
+.bird-box{
+    position: absolute;
+    display: flex;
+    top: 50px; 
+    width: 100px;
+    height: 50px;
+    animation: bird 10s infinite linear;
+}
+.jump{
+    animation: mario-animation 500ms ease-out;
+}
+.gameOver{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f0ffff;
+    height: 80px;
+    max-width: 100%;
+    visibility: hidden; 
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.restart{
+    position: absolute;
+    top: 80%;
+    width: 33%;
+    height: 3rem;
+    border-radius: 2rem;
+    background-color: #191941;
+    color: #f0ffff;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid #000000;
+    font-size: 20pt;
+    transition: 700ms;
+}
+.restart:hover{
+    background-color: #c5c5d0;
+    color:#221e70;
+}
+.restart:active{
+    color: #ffffff;
+    background-color: #000000;
+}
+
+@keyframes cloud{
+ from{
+    left: -550px;
+ }
+ to{
+    left: 100%;
+ }
+}
+@keyframes bird{
+    from{
+       left: -550px;
+    }
+    to{
+       left: 100%;
+    }
+   }
+@keyframes pipe-animations {
+    from{
+       right: -550px;
+    }
+    to{
+       right: 100%;
+    }
+   }  
+   @keyframes mario-animation{
+    0%{
+        bottom:0px;
+    }
+    40%{
+        bottom:180px
+    }
+    60%{
+        bottom:120px
+    }
+    80%{
+        bottom:60px;
+    }
+    100%{
+        bottom:0px;
+    }
+    }
+   
+
+
+
