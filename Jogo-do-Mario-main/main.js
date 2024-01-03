@@ -5,7 +5,10 @@ const pipe = document.querySelector(".cano");
 const buttonRestart = document.querySelector(".restart");
 const bird = document.querySelector(".bird-box");
 const gameOver = document.querySelector(".gameOver");
+const textGameOver = document.querySelector("#textGameOver")
+const princesa = document.querySelector(".princesa");
 const vida = document.querySelector(".vida");
+const marioComemorando = document.querySelector(".marioComemorando")
 let score = 0;
 
 function jump(){
@@ -14,6 +17,28 @@ function jump(){
     mario.classList.remove('jump')
   }, 500)
 }
+const pontuacao = setInterval(
+  ()=>{
+    const marioPosition2 = +window.getComputedStyle(mario).bottom.replace('px', '');
+    if( marioPosition2 == 180){
+      score++;
+      vida.innerHTML = "vida : " + score ;
+    }
+    if(score == 50){
+       textGameOver.innerHTML = "Você ganhou, Parabéns";
+       textGameOver.style.visibility = "visible";
+       textGameOver.style.color = "black"
+       buttonRestart.style.visibility = "visible"
+       pipe.style.visibility = "hidden";
+       pipe.style.animation = "none";
+       nuvem.style.visibility = "hidden";
+       mario.style.visibility = "hidden";
+       bird.style.visibility = "hidden";
+       marioComemorando.style.visibility = "visible";
+       vida.style.visibility = "hidden";; 
+       
+    }
+  }, 1)
 
 const loop = setInterval(()=>{
     const pipePosition = pipe.offsetLeft;
@@ -38,10 +63,5 @@ const loop = setInterval(()=>{
 function reiniciar(){
   window.location.reload()
 }
-function vida(){
-  if(pipePosition <= 90 && pipePosition > 0 && marioPosition > 70){
-    score = score + 1;
-    vida.innerHTML = "vida : " + score;
-  }
-}
+
 document.addEventListener("keydown" , jump)
