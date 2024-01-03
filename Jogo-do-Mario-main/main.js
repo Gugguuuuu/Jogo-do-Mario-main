@@ -5,6 +5,8 @@ const pipe = document.querySelector(".cano");
 const buttonRestart = document.querySelector(".restart");
 const bird = document.querySelector(".bird-box");
 const gameOver = document.querySelector(".gameOver");
+const vida = document.querySelector(".vida");
+let score = 0;
 
 function jump(){
   mario.classList.add('jump')
@@ -35,5 +37,11 @@ const loop = setInterval(()=>{
 }, 10)
 function reiniciar(){
   window.location.reload()
+}
+function vida(){
+  if(pipePosition <= 90 && pipePosition > 0 && marioPosition > 70){
+    score = score + 1;
+    vida.innerHTML = "vida : " + score;
+  }
 }
 document.addEventListener("keydown" , jump)
